@@ -14,15 +14,17 @@ import javax.sql.DataSource;
 import javax.xml.crypto.Data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import webprj.entity.Notice;
 import webprj.service.NoticeService;
 
+@Component
 public class JDBCNoticeService implements NoticeService{
-	private String url = "jdbc:mysql://localhost:3306/newlecture?useUnicode=true&serverTimezone=Asia/Seoul";
-	private String uid = "root";
-	private String pwd = "1234";
-	private String driver = "com.mysql.cj.jdbc.Driver";
+	//private String url = "jdbc:mysql://localhost:3306/newlecture?useUnicode=true&serverTimezone=Asia/Seoul";
+	//private String uid = "root";
+	//private String pwd = "1234";
+	//private String driver = "com.mysql.cj.jdbc.Driver";
 	
 	private DataSource dataSource;
 	
@@ -174,8 +176,8 @@ public class JDBCNoticeService implements NoticeService{
 		String url = "jdbc:mysql://localhost:3306/newlecture?useUnicode=true&serverTimezone=Asia/Seoul";
 		String sql = "DELETE NOTICE WHERE ID=?";
 		
-		Class.forName(driver);
-		Connection con = DriverManager.getConnection(url,uid, pwd);                  
+		
+		Connection con = dataSource.getConnection();                  
 		//Statement st = con.createStatement();
 		//st.ex....(sql)
 		PreparedStatement st = con.prepareStatement(sql);		

@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <bean id="/index" class="webprj.controller.IndexController" />
+    <bean id="/index" class="webprj.controller.HomeController" />
     <bean id="/notice/list" class="webprj.controller.notice.ListController">
     	<property name="noticeService" ref="noticeService"></property>
     </bean>  
